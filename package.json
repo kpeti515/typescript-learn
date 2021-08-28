@@ -11,11 +11,19 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
+    "husky": "^7.0.2",
+    "onchange": "^7.1.0",
     "prettier": "^2.3.2"
   },
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx",
-    "prettier": "prettier --config .prettierrc --write \"./**/*.{ts,js,jsx}\""
+    "prettier-format": "prettier --config .prettierrc \"./**/*.{ts,js,jsx}\" --write",
+    "prettier-watch": "onchange \"./**/*.{ts,js,jsx}\" -- prettier --write {{changed}}"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier-format && npm run lint"
+    }
   },
   "dependencies": {
     "typescript": "^4.4.2"

@@ -1,17 +1,17 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
+    es2021: true
   },
-  extends: ['airbnb-base'],
+  extends: ['airbnb-base', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
-    sourceType: 'module',
+    sourceType: 'module'
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    // 'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
-    'no-console': 'off',
-  },
+    'linebreak-style': 0,
+    'no-console': 'off'
+  }
 };
