@@ -1,15 +1,19 @@
-console.log('Hello World!')
+console.log('Hello World!');
 
 function greet(person: string, date: Date) {
-  console.log(`Hello ${person}, today is ${date.toLocaleTimeString()}!`)
+  console.log(`Hello ${person}, today is ${date.toLocaleTimeString()}!`);
 }
 
-let bar
-function foo() { return true; }
-if (foo()) { bar = 0; }
+let bar;
+function foo() {
+  return true;
+}
+if (foo()) {
+  bar = 0;
+}
+console.log(bar);
 
-greet('Lorand', new Date())
-let a = 0
-a = 2 ? a = 25 :
-  a = 20 ? a = 15 : a = 20
-const c = 12
+greet('Lorand', new Date());
+
+const c = 12;
+console.log(c * 2);
