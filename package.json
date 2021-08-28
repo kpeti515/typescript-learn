@@ -1,0 +1,10 @@
+{
+  "name": "typescript-learn",
+  "version": "1.0.0",
+  "description": "a small playground where i learn typescript",
+  "main": "index.js",
+  "author": "Lorand Kallai <lorandkallai@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {},
+  "scripts": {}
+}
