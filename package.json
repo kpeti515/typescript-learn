@@ -14,19 +14,27 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-prettier": "^3.4.1",
     "husky": "^4.3.8",
+    "lint-staged": "^11.1.2",
     "onchange": "^7.1.0",
     "prettier": "^2.3.2"
   },
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx",
     "prettier-format-ts": "prettier --config .prettierrc \"./**/*.{ts,tsx}\" --write",
-      "prettier-format-js": "prettier --config .prettierrc \"./**/*.{js,jsx}\" --write",
+    "prettier-format-js": "prettier --config .prettierrc \"./**/*.{js,jsx}\" --write",
     "prettier-watch": "onchange \"./**/*.{ts,js,jsx}\" -- prettier --write {{changed}}"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prettier-format-ts && npm run prettier-format-js && npm run lint && git add ."
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*{ts,js}": [
+      "npm run prettier-format-ts",
+      "npm run prettier-format-js",
+      "npm run lint"
+    ]
   },
   "dependencies": {
     "typescript": "^4.4.2"
