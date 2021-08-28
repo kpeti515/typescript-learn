@@ -12,9 +12,9 @@ if (foo()) {
   bar = 0;
 }
 console.log(bar);
-console.log(new Date())
+console.log(new Date());
 
-greet("Lorand", new Date())
+greet('Lorand', new Date());
 
 const c = 12
 

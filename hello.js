@@ -11,6 +11,6 @@ if (foo()) {
 }
 console.log(bar);
 console.log(new Date());
-greet("Lorand", new Date());
+greet('Lorand', new Date());
 const c = 12;
 console.log(c * 2);
