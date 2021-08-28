@@ -6,16 +6,14 @@ function greet(person: string, date: Date) {
 
 let bar;
 function foo() {
-              return true;
+  return true;
 }
 if (foo()) {
-                              bar = 0;
+  bar = 0;
 }
 console.log(bar);
-
-
 
 greet('Lorand', new Date());
 
 const c = 12;
-console.log(c * 2)
+console.log(c * 2);
