@@ -16,6 +16,6 @@ console.log(new Date());
 
 greet('Lorand', new Date());
 
-const c = 12;
+const c = 11;
 
 console.log(c * 2);

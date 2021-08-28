@@ -1,16 +1,16 @@
 console.log('Hello World!');
 function greet(person, date) {
-    console.log(`Hello ${person}, today is ${date.toLocaleTimeString()}!`);
+  console.log(`Hello ${person}, today is ${date.toLocaleTimeString()}!`);
 }
 let bar;
 function foo() {
-    return true;
+  return true;
 }
 if (foo()) {
-    bar = 0;
+  bar = 0;
 }
 console.log(bar);
 console.log(new Date());
 greet('Lorand', new Date());
-const c = 12;
+const c = 11;
 console.log(c * 2);
