@@ -19,12 +19,13 @@
   },
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx",
-    "prettier-format": "prettier --config .prettierrc \"./**/*.{ts,js,jsx}\" --write",
+    "prettier-format-ts": "prettier --config .prettierrc \"./**/*.{ts,tsx}\" --write",
+      "prettier-format-js": "prettier --config .prettierrc \"./**/*.{js,jsx}\" --write",
     "prettier-watch": "onchange \"./**/*.{ts,js,jsx}\" -- prettier --write {{changed}}"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prettier-format && npm run lint && git add ."
+      "pre-commit": "npm run prettier-format-ts && npm run prettier-format-js && npm run lint && git add ."
     }
   },
   "dependencies": {
