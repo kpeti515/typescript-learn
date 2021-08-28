@@ -9,13 +9,13 @@ function foo() {
   return true;
 }
 if (foo()) {
-  bar = 0;
+          bar = 0;
 }
 console.log(bar);
+console.log(new Date)
 
 greet('Lorand', new Date());
 
-const c = 12;
-
+const c = 12
 
 console.log(c * 2)
