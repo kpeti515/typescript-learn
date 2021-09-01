@@ -15,6 +15,7 @@
     "eslint-plugin-prettier": "^3.4.1",
     "husky": "^4.3.8",
     "lint-staged": "^11.1.2",
+    "nodemon": "^2.0.12",
     "onchange": "^7.1.0",
     "prettier": "^2.3.2"
   },
@@ -22,7 +23,8 @@
     "lint": "eslint . --ext .ts,.tsx",
     "prettier-format-ts": "prettier --config .prettierrc \"./**/*.{ts,tsx,js,jsx}\" --write",
     "prettier-format-js": "prettier --config .prettierrc \"./**/*.{js,jsx}\" --write",
-    "prettier-watch": "onchange \"./**/*.{ts,js,jsx}\" -- prettier --write {{changed}}"
+    "prettier-watch": "onchange \"./**/*.{ts,js,jsx}\" -- prettier --write {{changed}}",
+    "nodemon": "nodemon hello.js"
   },
   "husky": {
     "hooks": {
