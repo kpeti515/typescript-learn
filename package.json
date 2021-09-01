@@ -24,7 +24,7 @@
     "prettier-format-ts": "prettier --config .prettierrc \"./**/*.{ts,tsx,js,jsx}\" --write",
     "prettier-format-js": "prettier --config .prettierrc \"./**/*.{js,jsx}\" --write",
     "prettier-watch": "onchange \"./**/*.{ts,js,jsx}\" -- prettier --write {{changed}}",
-    "nodemon": "nodemon hello.js"
+    "console-logs": "nodemon hello.js"
   },
   "husky": {
     "hooks": {
