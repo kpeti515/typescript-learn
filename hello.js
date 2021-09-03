@@ -14,55 +14,10 @@ console.log(new Date());
 greet('Lorand', new Date());
 const c = 11;
 console.log(c * 2);
-// equality narrowing
-function example(x, y) {
-  if (x === y) {
-    x.toLowerCase();
-    y.toUpperCase();
-  } else {
-    console.log(x, y);
-  }
-}
-example('asd', 'lol');
-function multiplyValue(container, factor) {
-  if (container.value != null) {
-    console.log(container.value);
-    const multipliedValue = container.value * factor;
-    console.log(multipliedValue);
-  }
-}
-multiplyValue({ value: 22 }, 3);
-function move(animal) {
-  if ('swim' in animal) {
-    return animal.swim();
-  }
-  return animal.fly();
-}
-const bird = {
-  swim: () => console.log('I can swim')
-};
-const fish = {
-  fly: () => console.log('I can fly')
-};
-const human = {
-  swim: () => console.log('I can swim')
-};
-move(bird);
-move(fish);
-move(human);
-function logTime(x) {
-  if (x instanceof Date) {
-    console.log(x.toUTCString());
-  } else {
-    console.log(x.toLowerCase());
-  }
-}
-logTime(new Date());
-logTime('today');
 // object types:
 function printCoordinates(pt) {
-  console.log(`The coordintate's x value is ${pt.x}`);
-  console.log(`The coordintate's x value is ${pt.y}`);
+  console.log(`The coordinate's x value is ${pt.x}`);
+  console.log(`The coordinate's x value is ${pt.y}`);
 }
 printCoordinates({ x: 25, y: 15 });
 function printName({ first, last }) {
@@ -86,8 +41,8 @@ function welcomePeople(x) {
 welcomePeople(['Bob', 'Joe']);
 welcomePeople('Alice');
 function printMyCoordinates(pt) {
-  console.log(`The coordintate's x value is ${pt.x} at your position`);
-  console.log(`The coordintate's x value is ${pt.y} at your position`);
+  console.log(`The coordinate's x value is ${pt.x} at your position`);
+  console.log(`The coordinate's x value is ${pt.y} at your position`);
 }
 printMyCoordinates({ x: 25, y: 11 });
 function print3D(pt) {
@@ -144,22 +99,92 @@ function padLeft(padding, input) {
   return padding + input;
 }
 padLeft(11, 'asd');
-function printAll(strs) {
-  if (strs && typeof strs === 'object') {
-    console.log(`Array items: ${strs.join(', ')}`);
+function printAll(strings) {
+  if (strings && typeof strings === 'object') {
+    console.log(`Array items: ${strings.join(', ')}`);
   } else {
-    console.log(`The string which you provided: ${strs}`);
+    console.log(`The string which you provided: ${strings}`);
   }
 }
 printAll(null);
-printAll('Lolika-Bolka');
+printAll('MEH');
 printAll(['I', 'love', 'pancakes']);
 function multiplyAll(values, factor = 2) {
   if (!values) {
-    return console.log(values);
+    return console.log(`Input was ${values}`);
   }
   return values.map((value) => value * factor);
 }
 const mathNumbers = undefined;
 multiplyAll(mathNumbers);
 multiplyAll([22, 3, 432, 34]);
+// equality narrowing
+function example(ex, y) {
+  if (ex === y) {
+    ex.toLowerCase();
+    y.toUpperCase();
+  } else {
+    console.log(ex, y);
+  }
+}
+example('asd', 'lol');
+function multiplyValue(container, factor) {
+  if (container.value != null) {
+    console.log(container.value);
+    const multipliedValue = container.value * factor;
+    console.log(multipliedValue);
+  }
+}
+multiplyValue({ value: 22 }, 3);
+function move(animal) {
+  if ('swim' in animal) {
+    return animal.swim();
+  }
+  return animal.fly();
+}
+const bird = {
+  fly: () => console.log('I can swim')
+};
+const fish = {
+  swim: () => console.log('I can fly')
+};
+const human = {
+  swim: () => console.log('I can swim')
+};
+move(bird);
+move(fish);
+move(human);
+// instanceof narrowing
+function logTime(time) {
+  if (time instanceof Date) {
+    console.log(time.toUTCString());
+  } else {
+    console.log(time.toLowerCase());
+  }
+}
+logTime(new Date());
+logTime('today');
+// Assignments
+let asd = Math.random() < 0.5 ? 10 : 'hello world';
+asd = 1;
+console.log(asd);
+asd = 'I love to dance!';
+console.log(asd);
+// Control flow analysis
+// Using type predicates
+function isFish(pet) {
+  return pet.swim !== undefined;
+}
+isFish(fish);
+function getSmallPet() {
+  return Math.random() > 0.5 ? bird : fish;
+}
+const pet = getSmallPet();
+if (isFish(pet)) {
+  pet.swim();
+} else {
+  pet.fly();
+}
+const zoo = [getSmallPet(), getSmallPet(), getSmallPet()];
+const underWater1 = zoo.filter(isFish);
+console.log(underWater1);

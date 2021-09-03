@@ -22,8 +22,8 @@ console.log(c * 2);
 
 // object types:
 function printCoordinates(pt: { x: number; y: number }) {
-  console.log(`The coordintate's x value is ${pt.x}`);
-  console.log(`The coordintate's x value is ${pt.y}`);
+  console.log(`The coordinate's x value is ${pt.x}`);
+  console.log(`The coordinate's x value is ${pt.y}`);
 }
 printCoordinates({ x: 25, y: 15 });
 
@@ -56,8 +56,8 @@ type Point = {
   y: number;
 };
 function printMyCoordinates(pt: Point) {
-  console.log(`The coordintate's x value is ${pt.x} at your position`);
-  console.log(`The coordintate's x value is ${pt.y} at your position`);
+  console.log(`The coordinate's x value is ${pt.x} at your position`);
+  console.log(`The coordinate's x value is ${pt.y} at your position`);
 }
 printMyCoordinates({ x: 25, y: 11 });
 
@@ -135,20 +135,20 @@ function padLeft(padding: number | string, input: string) {
 }
 padLeft(11, 'asd');
 
-function printAll(strs: string | string[] | null) {
-  if (strs && typeof strs === 'object') {
-    console.log(`Array items: ${strs.join(', ')}`);
+function printAll(strings: string | string[] | null) {
+  if (strings && typeof strings === 'object') {
+    console.log(`Array items: ${strings.join(', ')}`);
   } else {
-    console.log(`The string which you provided: ${strs}`);
+    console.log(`The string which you provided: ${strings}`);
   }
 }
 printAll(null);
-printAll('Lolika-Bolka');
+printAll('MEH');
 printAll(['I', 'love', 'pancakes']);
 
 function multiplyAll(values: number[] | undefined, factor = 2): number[] | void {
   if (!values) {
-    return console.log(values);
+    return console.log(`Input was ${values}`);
   }
   return values.map((value) => value * factor);
 }
@@ -191,10 +191,10 @@ function move(animal: Fish | Bird | Human) {
   return animal.fly();
 }
 const bird = {
-  swim: () => console.log('I can swim')
+  fly: () => console.log('I can swim')
 };
 const fish = {
-  fly: () => console.log('I can fly')
+  swim: () => console.log('I can fly')
 };
 const human = {
   swim: () => console.log('I can swim')
@@ -213,3 +213,33 @@ function logTime(time: Date | string) {
 }
 logTime(new Date());
 logTime('today');
+
+// Assignments
+let asd = Math.random() < 0.5 ? 10 : 'hello world';
+asd = 1;
+console.log(asd);
+asd = 'I love to dance!';
+console.log(asd);
+
+// Control flow analysis
+
+// Using type predicates
+function isFish(pet: Fish | Bird): pet is Fish {
+  return (pet as Fish).swim !== undefined;
+}
+isFish(fish);
+function getSmallPet(): Fish | Bird {
+  return Math.random() > 0.5 ? bird : fish;
+}
+
+const pet = getSmallPet();
+
+if (isFish(pet)) {
+  pet.swim();
+} else {
+  pet.fly();
+}
+
+const zoo: (Bird | Fish)[] = [getSmallPet(), getSmallPet(), getSmallPet()];
+const underWater1: Fish[] = zoo.filter(isFish);
+console.log(underWater1);
