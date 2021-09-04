@@ -240,6 +240,31 @@ if (isFish(pet)) {
   pet.fly();
 }
 
-const zoo: (Bird | Fish)[] = [getSmallPet(), getSmallPet(), getSmallPet()];
+const zoo: (Bird | Fish)[] = Array.from({ length: 3 }, () => getSmallPet());
 const underWater1: Fish[] = zoo.filter(isFish);
 console.log(underWater1);
+
+// Discriminated unions + Exhaustiveness checking
+interface Circle {
+  kind: 'circle';
+  radius: number;
+}
+interface Square {
+  kind: 'square';
+  sideLength: number;
+}
+type Shape = Circle | Square;
+function getArea(shape: Shape) {
+  switch (shape.kind) {
+    case 'circle':
+      return Math.PI * shape.radius ** 2;
+    case 'square':
+      return shape.sideLength ** 2;
+    default:
+      // eslint-disable-next-line no-case-declarations
+      const exhaustiveCheck: never = shape;
+      return exhaustiveCheck;
+  }
+}
+getArea({ kind: 'circle', radius: 20 });
+getArea({ kind: 'square', sideLength: 20 });

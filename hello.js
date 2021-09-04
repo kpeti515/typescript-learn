@@ -185,6 +185,20 @@ if (isFish(pet)) {
 } else {
   pet.fly();
 }
-const zoo = [getSmallPet(), getSmallPet(), getSmallPet()];
+const zoo = Array.from({ length: 3 }, () => getSmallPet());
 const underWater1 = zoo.filter(isFish);
 console.log(underWater1);
+function getArea(shape) {
+  switch (shape.kind) {
+    case 'circle':
+      return Math.PI * shape.radius ** 2;
+    case 'square':
+      return shape.sideLength ** 2;
+    default:
+      // eslint-disable-next-line no-case-declarations
+      const exhaustiveCheck = shape;
+      return exhaustiveCheck;
+  }
+}
+getArea({ kind: 'circle', radius: 20 });
+getArea({ kind: 'square', sideLength: 20 });
