@@ -69,3 +69,30 @@ function combine(arr1, arr2) {
 const combinedArr = combine([1, 2, 3], ['hello']);
 console.log(combinedArr);
 // guidelines for writing good generic functions
+// function firstElement<Type>(arr: Type[]) {
+//   return arr[0]
+// }
+// vs
+// function firstElement<Type extends any[]>(arr: Type) {
+//   return arr[0];
+// }
+// const a = firstElement([1,2,3,4])
+function filter1(arr, func) {
+  return arr.filter(func);
+}
+function filter2(arr, func) {
+  return arr.filter(func);
+}
+const asdA = filter1([1, 2, 3], (item) => item > 2);
+const asdB = filter2([1, 2, 3], (item) => item > 2);
+console.log(asdA, asdB);
+function greetingForeigner(s) {
+  console.log(`Hello ${s}`);
+}
+greetingForeigner('Lorand');
+// Optional parameters
+function f(x = 10) {
+  console.log(x);
+}
+f();
+f(11);
