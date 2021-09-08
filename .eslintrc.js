@@ -14,6 +14,9 @@ module.exports = {
     'linebreak-style': 0,
     'no-console': 'off',
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': ['error']
+    '@typescript-eslint/no-unused-vars': ['error'],
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
+    'no-redeclare': 'off',
+    '@typescript-eslint/no-redeclare': ['error']
   }
 };

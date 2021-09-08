@@ -10,6 +10,7 @@
     "target": "es2020",
     "strict": false,
     "strictNullChecks": true,
+    "noImplicitAny": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
