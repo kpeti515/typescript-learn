@@ -96,3 +96,35 @@ function f(x = 10) {
 }
 f();
 f(11);
+// optional parameters in callbacks
+function myForEach(arr, callback) {
+  for (let i = 0; i < arr.length; i++) {
+    callback(arr[i], i);
+  }
+}
+myForEach([1, 2, 3], (a) => console.log(`element: ${a}`));
+myForEach([1, 2, 3], (a, i) => console.log(`element: ${a}`, 'index: ', i));
+myForEach([1, 2, 3], (a, i) => {
+  if (i !== undefined) {
+    console.log(i.toFixed());
+  }
+});
+function makeDate(mOrTimestamp, d, y) {
+  if (d !== undefined && y !== undefined) {
+    return new Date(y, mOrTimestamp, d);
+  }
+  return new Date(mOrTimestamp);
+}
+const d1 = makeDate(12345678);
+const d2 = makeDate(5, 5, 5);
+// const d3 = makeDate(1, 3) --> TS error: no overload expects 2 arguments
+console.log(d1, `\n${d2}`);
+function fn1(x) {
+  return x;
+}
+fn1('asd');
+function fn2(x) {
+  return String(x);
+}
+fn2('meh');
+// declaring this in a function
