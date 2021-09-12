@@ -127,4 +127,36 @@ function fn2(x) {
   return String(x);
 }
 fn2('meh');
-// declaring this in a function
+const user = {
+  id: 123,
+  admin: false,
+  becomeAdmin() {
+    this.admin = true;
+  }
+};
+user.becomeAdmin();
+// interface DB {
+//   filterUsers(filter: (this: User) => boolean): User[]
+// }
+// const db = getDB();
+// const admins = db.filterUsers(function lol(this: User){
+//   return this.admin
+// })
+// console.log(admins)
+// other types to know about
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function noop() {
+  // eslint-disable-next-line no-useless-return
+  return;
+}
+function safeParse(s) {
+  return JSON.parse(s);
+}
+const someRandomString = '{"result":true, "count":42}'; // -> but it could be 'asd' without {}
+const randomObj = safeParse(someRandomString);
+console.log(randomObj);
+// function fail(msg: string): never {
+//   throw new Error(msg)
+// }
+// fail('Huston, we have a problem')
+// rest parameters and arguments
