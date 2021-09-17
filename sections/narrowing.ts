@@ -125,7 +125,7 @@ interface Square {
   kind: 'square';
   sideLength: number;
 }
-type Shape = Circle | Square;
+export type Shape = Circle | Square;
 function getArea(shape: Shape) {
   switch (shape.kind) {
     case 'circle':

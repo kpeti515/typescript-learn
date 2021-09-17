@@ -160,3 +160,18 @@ console.log(randomObj);
 // }
 // fail('Huston, we have a problem')
 // rest parameters and arguments
+// other types
+// eslint-disable-next-line arrow-body-style
+const f1 = () => {
+  return true;
+};
+const f2 = () => true;
+// eslint-disable-next-line func-names
+const f3 = function () {
+  return true;
+};
+console.log(f1(), f2(), f3());
+const v1 = f1();
+const v2 = f2();
+const v3 = f3();
+console.log(v1, v2, v3);
