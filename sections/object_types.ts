@@ -86,3 +86,4 @@ console.log(colorfulCircle);
 // interfaces vs intersections
 
 // generic object types
+// something went wrong
