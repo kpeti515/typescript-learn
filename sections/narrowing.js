@@ -1,4 +1,3 @@
-Object.defineProperty(exports, '__esModule', { value: true });
 // narrowing
 function padLeft(padding, input) {
   if (typeof padding === 'number') {
@@ -110,3 +109,4 @@ function getArea(shape) {
 }
 getArea({ kind: 'circle', radius: 20 });
 getArea({ kind: 'square', sideLength: 20 });
+export {};
