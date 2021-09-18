@@ -1,3 +1,4 @@
+Object.defineProperty(exports, '__esModule', { value: true });
 // narrowing
 function padLeft(padding, input) {
   if (typeof padding === 'number') {
