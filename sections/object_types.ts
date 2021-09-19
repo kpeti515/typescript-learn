@@ -1,4 +1,4 @@
-import * as narrowing from './narrowing';
+import type { Shape } from './narrowing';
 // greet already declared in hello.ts
 // function greet(person: { name: string; age: number }) {
 //   return `Hello ${person.name}`;
@@ -7,17 +7,17 @@ import * as narrowing from './narrowing';
 
 // property modifiers
 interface PaintOptions {
-  shape: narrowing.Shape;
+  shape: Shape;
   xPos?: number;
   yPos?: number;
 }
 function paintShape({ shape, xPos = 0, yPos = 0 }: PaintOptions) {
   console.log(`Item ${JSON.stringify(shape)} xPos: ${xPos}, yPos ${yPos}`);
 }
-function getCircle(): narrowing.Shape {
+function getCircle(): Shape {
   return { kind: 'circle', radius: 20 };
 }
-function getRectangle(): narrowing.Shape {
+function getRectangle(): Shape {
   return { kind: 'square', sideLength: 20 };
 }
 function getShape() {
