@@ -49,4 +49,52 @@ function setContents(box, newContents) {
   console.log(box.contents);
 }
 setContents(boxA, 'It magically works!');
+// the Array type
+function padString(value) {
+  return value.map((str) => str.padStart(15, 'meh'));
+}
+const strArr = ['hello', 'traveler'];
+const str1 = padString(strArr);
+// eslint-disable-next-line no-array-constructor
+const str2 = padString(new Array('what', 'the', 'heck'));
+console.log(str1, str2);
+// the ReadonlyArray type
+function readInputArray(values) {
+  // or values: readonly string[]
+  const copy = values.slice();
+  console.log(`The first value is ${values[0]}`);
+  // values.push('nextWord') Property 'push' does not exist on type 'readonly string[]'.
+  console.log(copy);
+}
+const roArray = ['one', 'two', 'three', 'um', 'da', 'da', 'um', 'da', 'da'];
+readInputArray(roArray);
+function logPair(pair) {
+  const a = pair[0];
+  const b = pair[1];
+  // const c = pair[2] --> Tuple type 'StringNumberPair' of length '2' has no element at index '2'.
+  console.log(`The string is ${a} and the number is ${b}`);
+}
+logPair(['wonderful', 66]);
+function destructExample(stringNumber) {
+  const [inputString, numb] = stringNumber;
+  console.log(inputString, numb);
+}
+destructExample(['I love you', 66]);
+const testerArr = ['asd', 22];
+console.log(testerArr.slice(0, 1));
+function readCoordinate(coord) {
+  console.log(`Provided coordinates are ${coord.length === 2 ? 'two' : 'three'} dimensional.`);
+}
+readCoordinate([11, 22]);
+readCoordinate([11, 22, 33]);
+const a = ['11', true, true, true, 22];
+const b = ['22', 123, true, true, false];
+const c = [true, false, false, true, 'Rest parameter in the first place?', 65];
+console.log('a:', a, '\nb:', b, '\nc:', c);
+// readonly tuple types
+const point = [3, 4];
+function distanceFromOrigin([x, y]) {
+  console.log(`distance from origin: ${Math.sqrt(x ** 2 + y ** 2)} unit`);
+}
+distanceFromOrigin(point);
 export {};
