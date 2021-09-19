@@ -14,7 +14,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "watch": true
+    "watch": true,
+    "outDir": "dist"
   },
   "exclude": [
     "node_modules",
