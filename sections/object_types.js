@@ -38,7 +38,15 @@ const colorfulCircle = {
   radius: 42
 };
 console.log(colorfulCircle);
+const boxA = { contents: 'asd' };
+const boxB = { contents: 'lol' };
+console.log(boxA, boxB);
+const appleBox = { contents: { name: 'A13', price: 999, releaseDate: new Date(2021, 8, 14) } };
+console.log(appleBox);
+function setContents(box, newContents) {
+  // eslint-disable-next-line no-param-reassign
+  box.contents = newContents;
+  console.log(box.contents);
+}
+setContents(boxA, 'It magically works!');
 export {};
-// interfaces vs intersections
-// generic object types
-// something went wrong-helloo

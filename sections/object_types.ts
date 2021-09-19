@@ -86,4 +86,29 @@ console.log(colorfulCircle);
 // interfaces vs intersections
 
 // generic object types
-// something went wrong-helloo
+interface Box<Type> {
+  contents: Type;
+}
+const boxA: Box<string> = { contents: 'asd' };
+const boxB: Box<string> = { contents: 'lol' };
+console.log(boxA, boxB);
+interface Apple {
+  price: number;
+  name: string;
+  releaseDate: Date;
+}
+const appleBox: Box<Apple> = { contents: { name: 'A13', price: 999, releaseDate: new Date(2021, 8, 14) } };
+console.log(appleBox);
+
+function setContents<Type>(box: Box<Type>, newContents: Type) {
+  // eslint-disable-next-line no-param-reassign
+  box.contents = newContents;
+  console.log(box.contents);
+}
+setContents(boxA, 'It magically works!');
+
+type OrNull<Type> = Type | null;
+type OneOrMany<Type> = Type | Type[];
+type OneOrManyOrNull<Type> = OrNull<OneOrMany<Type>>;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+type OneOrManyOrNullStrings = OneOrManyOrNull<string>;
