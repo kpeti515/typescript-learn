@@ -1,9 +1,20 @@
-// import { Shape } from './narrowing'
-// greet already declared in hello.ts
-// function greet(person: { name: string; age: number }) {
-//   return `Hello ${person.name}`;
-// }
-// console.log(greet({ name: 'lol', age: 22 }));
+function paintShape({ shape, xPos = 0, yPos = 0 }) {
+  console.log(`Item ${JSON.stringify(shape)} xPos: ${xPos}, yPos ${yPos}`);
+}
+function getCircle() {
+  return { kind: 'circle', radius: 20 };
+}
+function getRectangle() {
+  return { kind: 'square', sideLength: 20 };
+}
+function getShape() {
+  return Math.random() > 0.5 ? getCircle() : getRectangle();
+}
+const shape = getShape();
+paintShape({ shape });
+paintShape({ shape, xPos: 100 });
+paintShape({ shape, yPos: 100 });
+paintShape({ shape, xPos: 100, yPos: 100 });
 function dummy(obj) {
   console.log(`prop has the value: '${obj.prop}'.`);
   // obj.prop = "hello"-> will trigger error message
@@ -27,6 +38,7 @@ const colorfulCircle = {
   radius: 42
 };
 console.log(colorfulCircle);
+export {};
 // interfaces vs intersections
 // generic object types
 // something went wrong-helloo
