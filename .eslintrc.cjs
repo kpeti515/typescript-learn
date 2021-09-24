@@ -12,6 +12,7 @@ module.exports = {
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
     'linebreak-style': 0,
+    'func-names': ['error', 'as-needed'],
     'no-console': 'off',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],

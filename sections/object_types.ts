@@ -1,4 +1,4 @@
-import type { Shape } from './narrowing';
+// import type { Shape } from './narrowing';
 // greet already declared in hello.ts
 // function greet(person: { name: string; age: number }) {
 //   return `Hello ${person.name}`;
@@ -6,28 +6,28 @@ import type { Shape } from './narrowing';
 // console.log(greet({ name: 'lol', age: 22 }));
 
 // property modifiers
-interface PaintOptions {
-  shape: Shape;
-  xPos?: number;
-  yPos?: number;
-}
-function paintShape({ shape, xPos = 0, yPos = 0 }: PaintOptions) {
-  console.log(`Item ${JSON.stringify(shape)} xPos: ${xPos}, yPos ${yPos}`);
-}
-function getCircle(): Shape {
-  return { kind: 'circle', radius: 20 };
-}
-function getRectangle(): Shape {
-  return { kind: 'square', sideLength: 20 };
-}
-function getShape() {
-  return Math.random() > 0.5 ? getCircle() : getRectangle();
-}
-const shape = getShape();
-paintShape({ shape });
-paintShape({ shape, xPos: 100 });
-paintShape({ shape, yPos: 100 });
-paintShape({ shape, xPos: 100, yPos: 100 });
+// interface PaintOptions {
+//   shape: Shape;
+//   xPos?: number;
+//   yPos?: number;
+// }
+// function paintShape({ shape, xPos = 0, yPos = 0 }: PaintOptions) {
+//   console.log(`Item ${JSON.stringify(shape)} xPos: ${xPos}, yPos ${yPos}`);
+// }
+// function getCircle(): Shape {
+//   return { kind: 'circle', radius: 20 };
+// }
+// function getRectangle(): Shape {
+//   return { kind: 'square', sideLength: 20 };
+// }
+// function getShape() {
+//   return Math.random() > 0.5 ? getCircle() : getRectangle();
+// }
+// const shape = getShape();
+// paintShape({ shape });
+// paintShape({ shape, xPos: 100 });
+// paintShape({ shape, yPos: 100 });
+// paintShape({ shape, xPos: 100, yPos: 100 });
 
 // readonly properties
 interface someType {
@@ -179,8 +179,8 @@ type StringBooleansNumber = [string, ...boolean[], number];
 type BooleansStringNumber = [...boolean[], string, number];
 const a: StringBooleansNumber = ['11', true, true, true, 22];
 const b: StringNumberBooleans = ['22', 123, true, true, false];
-const c: BooleansStringNumber = [true, false, false, true, 'Rest parameter in the first place?', 65];
-console.log('a:', a, '\nb:', b, '\nc:', c);
+const ca: BooleansStringNumber = [true, false, false, true, 'Rest parameter in the first place?', 65];
+console.log('a:', a, '\nb:', b, '\nc:', ca);
 
 // readonly tuple types
 const point = [3, 4] as const;
