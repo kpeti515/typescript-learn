@@ -211,3 +211,51 @@ function createLabel<T extends number | string>(idOrName: T): NameOrId<T> {
 // console.log(testA, testB, testC);
 
 // conditional type constrains
+type MessageOf<T> = T extends { message: unknown } ? T['message'] : never;
+
+interface Email {
+  message: string;
+}
+type EmailMessageContents = MessageOf<Email>;
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+type DogMessageContents = MessageOf<Dog>;
+
+type Flatten<T> = T extends any[] ? T[number] : T;
+type Str = Flatten<string[]>;
+type Num = Flatten<number>;
+const emailMessage: EmailMessageContents = 'It is just a simple string';
+const num: Num = 22;
+const str: Str = 'asd';
+console.log(num, str, emailMessage);
+
+// inferring within conditional types
+
+type GetReturnType<T> = T extends (...args: never[]) => infer Return ? Return : never;
+type Numb = GetReturnType<() => number>;
+type Strings = GetReturnType<(x: string, y: string) => string[]>;
+type Bools = GetReturnType<(a: boolean, b: boolean) => boolean[]>;
+
+const test11: Numb = 212;
+const test12: Strings = ['x', 'y'];
+const test13: Bools = [true, false];
+console.log(test11, test12, test13);
+
+declare function stringOrNum(x: string): number;
+declare function stringOrNum(x: number): string;
+declare function stringOrNum(x: string | number): string | number;
+
+type T1 = ReturnType<typeof stringOrNum>;
+const anotherString1: T1 = 'asd';
+console.log(anotherString1);
+
+// distributive conditional types
+type ToArray<T> = T extends any ? T[] : never;
+type StrArrOrNumArr1 = ToArray<string | number>;
+const test14: StrArrOrNumArr1 = ['123', 'asd'];
+type ToArrayNonDist<T> = [T] extends [any] ? T[] : never;
+type StrArrOrNumArr2 = ToArrayNonDist<string | number>;
+const test15: StrArrOrNumArr2 = [1, 'asd', 3];
+console.log(test14, test15);
+
+// Mapped types
