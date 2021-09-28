@@ -259,3 +259,116 @@ const test15: StrArrOrNumArr2 = [1, 'asd', 3];
 console.log(test14, test15);
 
 // Mapped types
+type Horse = {};
+type OnlyBoolsAndHorses = {
+  [key: string]: boolean | Horse;
+};
+const conforms: OnlyBoolsAndHorses = {
+  del: true,
+  rodney: false
+};
+type OptionsFlag<T> = {
+  [Property in keyof T]: boolean;
+};
+type FeatureFlags = {
+  darkMode: () => void;
+  newUserProfile: () => void;
+};
+type FeatureOptions = OptionsFlag<FeatureFlags>;
+const featureOptions: FeatureOptions = { darkMode: true, newUserProfile: false };
+console.log(conforms, featureOptions);
+
+// Mapping Modifiers
+type CreateMutable<T> = {
+  -readonly [Property in keyof T]: T[Property];
+};
+type LockedAccount = {
+  readonly id: string;
+  readonly name: string;
+};
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+type UnlockedAccount = CreateMutable<LockedAccount>;
+
+type Concrete<T> = {
+  [Property in keyof T]-?: T[Property];
+};
+type MaybeUser = {
+  id: string;
+  name?: string;
+  age?: number;
+};
+type UserTest = Concrete<MaybeUser>;
+const userTest: UserTest = { age: 22, id: '124432s', name: 'Abdullah Abadalaman' };
+console.log(userTest);
+
+// Key Remapping via as
+type Getters<T> = {
+  [Property in keyof T as `get${Capitalize<string & Property>}`]: () => T[Property];
+};
+type LazyPerson = Getters<Person>;
+const lori: LazyPerson = { getAge: () => 22, getAlive: () => true, getName: () => 'Lorand' };
+
+type RemoveAgeField<T> = {
+  [Property in keyof T as Exclude<Property, 'age'>]: T[Property];
+};
+type AgelessPerson = RemoveAgeField<Person>;
+const andy: AgelessPerson = { alive: true, name: 'Andi' };
+console.log(andy.name, lori.getName());
+
+type ExtractPII<Type> = {
+  [Property in keyof Type]: Type[Property] extends { pii: true } ? true : false;
+};
+
+type DBFields = {
+  id: { format: 'incrementing' };
+  name: { type: string; pii: true };
+};
+
+type ObjectsNeedingGDPRDeletion = ExtractPII<DBFields>;
+const loriNeedingGDPRDeletion: ObjectsNeedingGDPRDeletion = { id: false, name: true };
+console.log(loriNeedingGDPRDeletion);
+
+// template literal types
+type EmailLocaleIDs = 'welcome_email' | 'email_heading';
+type FooterLocaleIDs = 'footer_title' | 'footer_sendoff';
+type AllLocaleIDs = `${EmailLocaleIDs | FooterLocaleIDs}_id`;
+type Lang = 'en' | 'ja' | 'hu';
+type LocaleMessageIDs = `${Lang}_${AllLocaleIDs}`;
+const hungarianMessageID: LocaleMessageIDs = 'hu_welcome_email_id';
+console.log(hungarianMessageID);
+
+// type PropEventSource<Type> = {
+//   on<Key extends string & keyof Type>
+//     (eventName: `${Key}Changed`, callback: (newValue: Type[Key]) => void): void;
+// };
+
+// declare function makeWatchedObject<Type>(obj: Type): Type & PropEventSource<Type>;
+// ------------------makeWatchedObject is not defined -------------------------------
+// const person = makeWatchedObject({
+//   firstName: "Satires",
+//   lastName: "Rona",
+//   age: 26
+// });
+
+// person.on("firstNameChanged", newName => {
+
+//   console.log(`new name is ${newName.toUpperCase()}`);
+// });
+
+// person.on("ageChanged", newAge => {
+
+//   if (newAge < 0) {
+//     console.warn("warning! negative age");
+//   }
+// })
+
+type Greeting = 'Hello, goodbye';
+type ShoutyGreeting = Uppercase<Greeting>;
+type QuietGreeting = Lowercase<Greeting>;
+type UncomfortableGreeting = Uncapitalize<Greeting>;
+const byeByeTypeManipulation: ShoutyGreeting | QuietGreeting | UncomfortableGreeting = 'HELLO, GOODBYE';
+
+type ASCIICacheKey<StringTest123 extends string> = `ID-${Uppercase<StringTest123>}`;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+type MainID = ASCIICacheKey<'my_app'>;
+console.log(byeByeTypeManipulation);
